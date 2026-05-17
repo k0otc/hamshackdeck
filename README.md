@@ -1,7 +1,7 @@
 # HamShackDeck
 
 <p align="center">
-  <img src="docs/marketing/02thumbnail.png" alt="HamShackDeck — Stream Deck control for your FlexRadio" width="100%"/>
+  <img src="docs/marketing/02-thumbnail.png" alt="HamShackDeck — Stream Deck control for your FlexRadio" width="100%"/>
 </p>
 
 **HamShackDeck** is a Stream Deck plugin that controls FlexRadio FLEX 6000
@@ -15,7 +15,7 @@ Works on **Stream Deck**, **Stream Deck XL**, and **Stream Deck+** (with
 full dial and LCD strip support for level and tune controls).
 
 <p align="center">
-  <img src="docs/marketing/07gallerydiscovery.png" alt="Built for serious operators: Pure TCP, Live status, MultiFLEX-aware" width="100%"/>
+  <img src="docs/marketing/07-gallery-discovery.png" alt="Built for serious operators: Pure TCP, Live status, MultiFLEX-aware" width="100%"/>
 </p>
 
 > Previously released as **FlexDeck**; renamed at FlexRadio's request.
@@ -33,7 +33,7 @@ running SmartSDR firmware that exposes the standard TCP/IP API on port
 ## Actions (31 total)
 
 <p align="center">
-  <img src="docs/marketing/06galleryspectrum.png" alt="Every common operation, one tap away — action icon grid" width="100%"/>
+  <img src="docs/marketing/06-gallery-spectrum.png" alt="Every common operation, one tap away — action icon grid" width="100%"/>
 </p>
 
 ### Tuning & operating
@@ -99,7 +99,7 @@ its Property Inspector (mapping to slice indices 0–3). All 15 slice-aware
 actions use the same picker — no more textbox-vs-dropdown mix.
 
 <p align="center">
-  <img src="docs/marketing/09gallerylivestatus.png" alt="Live status across every page — change a setting anywhere and HamShackDeck follows" width="100%"/>
+  <img src="docs/marketing/09-gallery-live-status.png" alt="Live status across every page — change a setting anywhere and HamShackDeck follows" width="100%"/>
 </p>
 
 ## Stream Deck+ dials
@@ -118,15 +118,15 @@ either a key or a dial. On a dial:
 On a regular key, pressing sets the value to a configurable preset.
 
 <p align="center">
-  <img src="docs/marketing/05galleryfeatures.png" alt="Tune from the dial. Lock on the touch. Mode-aware step sizes." width="100%"/>
+  <img src="docs/marketing/05-gallery-features.png" alt="Tune from the dial. Lock on the touch. Mode-aware step sizes." width="100%"/>
 </p>
 
 <p align="center">
-  <img src="docs/marketing/04gallerylcdstrip.png" alt="Live Stream Deck+ feedback — frequency, audio levels, filter width, NR at a glance" width="100%"/>
+  <img src="docs/marketing/04-gallery-lcd-strip.png" alt="Live Stream Deck+ feedback — frequency, audio levels, filter width, NR at a glance" width="100%"/>
 </p>
 
 <p align="center">
-  <img src="docs/marketing/03galleryactiongrid.png" alt="Preview, then commit — spin the dial to scrub, press to set" width="100%"/>
+  <img src="docs/marketing/03-gallery-action-grid.png" alt="Preview, then commit — spin the dial to scrub, press to set" width="100%"/>
 </p>
 
 ## ON AIR Indicator
@@ -212,7 +212,7 @@ field (the radio's LAN IP, e.g. `192.168.1.50`). Slice (A/B/C/D) defaults
 to **A**. Frequencies are in MHz with `.` decimal separator.
 
 <p align="center">
-  <img src="docs/marketing/08gallerypreviewdials.png" alt="Find your radio automatically — auto-discovery dropdown of FLEX radios on your LAN" width="100%"/>
+  <img src="docs/marketing/08-gallery-preview-dials.png" alt="Find your radio automatically — auto-discovery dropdown of FLEX radios on your LAN" width="100%"/>
 </p>
 
 ## Macro examples
