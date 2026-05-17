@@ -4,6 +4,39 @@ All notable changes to HamShackDeck are documented in this file. The
 format is loosely based on [Keep a Changelog](https://keepachangelog.com/),
 and versions follow CalVer (`YY.M.patch.build`).
 
+## [26.5.6] — 2026-05-17
+
+### Fixed
+- **`Invalid subscription object name` warnings removed.** The plugin
+  was sending `sub profiles all` and `sub interlock all` on every
+  connection, both of which the radio rejects (`profiles` and
+  `interlock` are not subscribable objects per the SmartSDR TCP API
+  spec). Status frames for those objects were arriving anyway via the
+  implicit global-scope broadcast that `sub client all` establishes,
+  so functionally nothing changes — but the radio no longer logs error
+  responses for our subscriptions, and the plugin no longer wastes two
+  command slots on every connect.
+
+### Added
+- **Property Inspector "What's New" footer.** Every PI now shows a
+  small, muted footer link at the bottom: `HamShackDeck vXX.X.X —
+  What's New`. Opens the CHANGELOG on GitHub in a new tab so users can
+  see what shipped in the build they're running without leaving the
+  Stream Deck app. Subtle styling so it doesn't compete with the
+  user's actual settings.
+- **Test Connection result glyph.** Successful tests now show a `✓`
+  prefix, failures show `✗`. Keeps the result legible without relying
+  purely on the green/red color difference — useful in dim Stream Deck
+  PIs and for users with reduced color sensitivity.
+
+### Changed
+- The shared PI helper script (`ui/shared/radio-picker.js`) now also
+  drives the What's New footer and is loaded by all 31 Property
+  Inspectors, including the lone System Volume PI that previously
+  didn't need it (System Volume is the only action that controls the
+  computer rather than the radio, so it has no radio-host field — but
+  it still gets the footer now).
+
 ## [26.5.5] — 2026-05-17
 
 ### Fixed
