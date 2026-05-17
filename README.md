@@ -1,5 +1,9 @@
 # HamShackDeck
 
+<p align="center">
+  <img src="docs/marketing/02thumbnail.png" alt="HamShackDeck — Stream Deck control for your FlexRadio" width="100%"/>
+</p>
+
 **HamShackDeck** is a Stream Deck plugin that controls FlexRadio FLEX 6000
 and 8000 series transceivers directly over the SmartSDR TCP/IP API. No
 FlexLib, no separate SmartSDR process required on the same machine — the
@@ -9,6 +13,10 @@ AetherSDR connected at the same time (MultiFLEX).
 
 Works on **Stream Deck**, **Stream Deck XL**, and **Stream Deck+** (with
 full dial and LCD strip support for level and tune controls).
+
+<p align="center">
+  <img src="docs/marketing/07gallerydiscovery.png" alt="Built for serious operators: Pure TCP, Live status, MultiFLEX-aware" width="100%"/>
+</p>
 
 > Previously released as **FlexDeck**; renamed at FlexRadio's request.
 > "FlexRadio", "SmartSDR", and the FLEX-6400 / 6500 / 6600 / 6700 / 8400 /
@@ -23,6 +31,10 @@ running SmartSDR firmware that exposes the standard TCP/IP API on port
 4992. Tested on a FLEX-8600 with SmartSDR 4.2.18 on Windows 11.
 
 ## Actions (31 total)
+
+<p align="center">
+  <img src="docs/marketing/06galleryspectrum.png" alt="Every common operation, one tap away — action icon grid" width="100%"/>
+</p>
 
 ### Tuning & operating
 
@@ -86,6 +98,10 @@ Every slice-aware action uses a consistent **A / B / C / D dropdown** in
 its Property Inspector (mapping to slice indices 0–3). All 15 slice-aware
 actions use the same picker — no more textbox-vs-dropdown mix.
 
+<p align="center">
+  <img src="docs/marketing/09gallerylivestatus.png" alt="Live status across every page — change a setting anywhere and HamShackDeck follows" width="100%"/>
+</p>
+
 ## Stream Deck+ dials
 
 Actions with both **Keypad** and **Encoder** controllers can be placed on
@@ -100,6 +116,18 @@ either a key or a dial. On a dial:
   on a HamShackDeck-branded background.
 
 On a regular key, pressing sets the value to a configurable preset.
+
+<p align="center">
+  <img src="docs/marketing/05galleryfeatures.png" alt="Tune from the dial. Lock on the touch. Mode-aware step sizes." width="100%"/>
+</p>
+
+<p align="center">
+  <img src="docs/marketing/04gallerylcdstrip.png" alt="Live Stream Deck+ feedback — frequency, audio levels, filter width, NR at a glance" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="docs/marketing/03galleryactiongrid.png" alt="Preview, then commit — spin the dial to scrub, press to set" width="100%"/>
+</p>
 
 ## ON AIR Indicator
 
@@ -182,6 +210,10 @@ Stream Deck's plugin manager. See `MIGRATION.md` for the full playbook.
 Each button has a Property Inspector with at minimum a **Radio host/IP**
 field (the radio's LAN IP, e.g. `192.168.1.50`). Slice (A/B/C/D) defaults
 to **A**. Frequencies are in MHz with `.` decimal separator.
+
+<p align="center">
+  <img src="docs/marketing/08gallerypreviewdials.png" alt="Find your radio automatically — auto-discovery dropdown of FLEX radios on your LAN" width="100%"/>
+</p>
 
 ## Macro examples
 
