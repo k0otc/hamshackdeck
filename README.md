@@ -10,8 +10,8 @@ dials sitting in front of you.
 ![HamShackDeck](docs/marketing/02-thumbnail.png)
 
 > **Note**: HamShackDeck was previously known as FlexDeck. The project was
-> renamed in v27.0.0 at FlexRadio's request to remove "Flex" from the
-> product name. If you were using FlexDeck, see the [v27.0.0 release notes](../../releases/tag/v27.0.0)
+> renamed in v26.5.0 at FlexRadio's request to remove "Flex" from the
+> product name. If you were using FlexDeck, see the [v26.5.0 release notes](../../releases/tag/v26.5.0)
 > for migration steps — you'll need to install the new plugin and rebuild
 > your decks (the internal UUID changed too, so the old buttons won't
 > auto-migrate).
