@@ -255,7 +255,7 @@ cw mon=1
 | Recall memory | `memory apply <n>` |
 | NR features | `slice set <n> <nr\|nb\|anf\|nrf\|nrl\|nrs\|rnn>=<0\|1>` |
 | MOX | `xmit <0\|1>` |
-| TUNE | `transmit tune <0\|1>` |
+| TUNE | `transmit tune <on\|off>` |
 | RF / Tune power | `transmit set rfpower=<n>` / `tunepower=<n>` |
 | TX DAX | `transmit set dax=<0\|1>` |
 | CW send | `cwx send <text>` (spaces as `0x7F`) |
