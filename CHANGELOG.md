@@ -4,6 +4,73 @@ All notable changes to HamShackDeck are documented in this file. The
 format is loosely based on [Keep a Changelog](https://keepachangelog.com/),
 and versions follow CalVer (`YY.M.patch.build`).
 
+## [26.5.17] — 2026-05-19
+
+### Removed
+- **System Volume polling is gone.** v26.5.16's push-based
+  `IAudioEndpointVolumeCallback` events have proven reliable on real
+  hardware, so the 250 ms backstop poll is no longer needed. The dial
+  now updates *only* on Core Audio's push notifications — keyboard
+  volume keys, system tray slider, other apps, Bluetooth headset
+  buttons, our own writes — all reflected in milliseconds with no
+  periodic OS query. The `pollMs` field has been removed from the
+  Property Inspector. Existing buttons that still have a `pollMs`
+  value persisted will see it silently ignored.
+
+### Added
+- **Default-device-change tracking.** When the user changes their
+  Windows default playback device (e.g. unplugs headphones and
+  Windows falls back to speakers, or manually switches via the tray
+  picker), any System Volume button targeting "Windows default
+  device" automatically re-registers its volume callback on the new
+  default endpoint. An immediate event fires with the new device's
+  current state so the dial UI doesn't show stale info.
+  Implementation: a single `IMMNotificationClient` is registered on
+  the device enumerator at helper startup, and
+  `OnDefaultDeviceChanged` walks the active watchers and re-attaches
+  the empty-match ones.
+
+### Known limitation / future work
+- Buttons configured with an explicit device match (e.g. "Edifier")
+  do *not* yet handle device disappearance / reappearance via
+  `IMMNotificationClient.OnDeviceStateChanged`. If you unplug a
+  matched device, the button effectively stops working until the
+  device reappears and the helper restarts (or until you reconfigure
+  the button). Default-device tracking covers the most common use
+  case and is enough for now; we'll add explicit-match
+  re-registration if it becomes a real annoyance.
+
+## [26.5.16] — 2026-05-19
+
+### Added (phase 1 of push-based volume tracking)
+- **System Volume now receives OS volume change notifications via
+  `IAudioEndpointVolumeCallback`.** Core Audio fires a callback the
+  moment the master volume or mute state changes — from any source —
+  and a C# implementation inside the long-lived PowerShell helper
+  pushes the new value to the plugin as an `EVT|...` line. The
+  SystemVolume action subscribes and updates the LCD within
+  milliseconds, with no poll involved.
+- The existing 250 ms poll is **intentionally still running** as a
+  safety backstop for this phase. If push events work as expected on
+  real hardware, the poll will be removed in v26.5.17. If they don't
+  (rare COM marshaling issue, unusual driver), the poll keeps the
+  button working.
+- Also: added `onDidReceiveSettings` handling to the SystemVolume
+  action (was missing — the earlier v26.5.12 sweep only covered
+  radio-data-subscribing actions). Now changing the device match,
+  step, preset, etc. in the PI takes effect without removing and
+  re-adding the button.
+
+### Internal
+- The PowerShell helper script gained a `VolumeWatcher` C# class
+  implementing `IAudioEndpointVolumeCallback`. Registrations are
+  reference-counted on the Node side (`VolumeHelper.onChange()`) so
+  multiple buttons watching the same device share one COM
+  registration.
+- New wire commands: `REQ|<id>|WATCH|<matchB64>` registers a
+  callback for a device; `REQ|<id>|UNWATCH|<matchB64>` unregisters.
+  Pushed events use a new line format: `EVT|<matchB64>|<volPct>|<muted>|<deviceNameB64>`.
+
 ## [26.5.15] — 2026-05-19
 
 ### Changed
