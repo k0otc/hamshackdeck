@@ -4,6 +4,48 @@ All notable changes to HamShackDeck are documented in this file. The
 format is loosely based on [Keep a Changelog](https://keepachangelog.com/),
 and versions follow CalVer (`YY.M.patch.build`).
 
+## [26.5.15] — 2026-05-19
+
+### Changed
+- **System Volume external-change polling tightened from 750 ms to
+  250 ms.** With v26.5.14's long-lived PowerShell helper, each poll is
+  now a ~5-15 ms round-trip instead of 200-500 ms, so we can afford
+  to poll roughly 3x more often. Effect: keyboard volume keys, the
+  system tray slider, and other apps now sync to the LCD almost
+  instantly instead of with a noticeable lag. Existing buttons with
+  a custom `pollMs` override keep that value; only the default
+  changed. PI hint text and clamp range (200&ndash;10000 ms)
+  unchanged.
+
+### Known limitation / future work
+- The OS-volume poll is still a poll. The "right" fix is to register
+  an `IAudioEndpointVolumeCallback` so the OS pushes change
+  notifications instead of us asking on a timer — that would let us
+  remove the poll entirely. Real work (PS-side callback objects are
+  fiddly and we'd need a new event-routing path on the Node side),
+  queued for a future release.
+
+## [26.5.14] — 2026-05-19
+
+### Changed
+- **System Volume dial is now snappy.** Previously every dial tick,
+  mute toggle, and volume read spawned a fresh `powershell.exe`
+  process. PowerShell startup plus JIT'ing the inline C# COM
+  bindings took 200-500 ms per operation, which made the dial feel
+  laggy — the LCD value would advance several steps before the OS
+  volume caught up. Now the plugin spawns a single long-lived
+  PowerShell helper at first use, sends commands to its stdin, and
+  reads responses from its stdout. Subsequent operations are ~5-15 ms
+  instead of hundreds. Matches the responsiveness of the built-in
+  Stream Deck multimedia volume control.
+- The helper auto-respawns if the child process dies (e.g. killed by
+  the user, blocked by antivirus). In-flight requests on the dead
+  child are rejected, and the next call brings up a new helper.
+- The device-picker enumeration in the System Volume PI still spawns
+  a one-shot PowerShell helper — it's only called when the user opens
+  the PI's "Audio device" dropdown, so the latency there is
+  invisible. Not worth restructuring.
+
 ## [26.5.13] — 2026-05-19
 
 ### Fixed
