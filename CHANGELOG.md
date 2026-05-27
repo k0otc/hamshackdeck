@@ -4,6 +4,33 @@ All notable changes to HamShackDeck are documented in this file. The
 format is loosely based on [Keep a Changelog](https://keepachangelog.com/),
 and versions follow CalVer (`YY.M.patch.build`).
 
+## [26.5.18] — 2026-05-19
+
+### Added
+- **New action: AF Mute.** A dedicated one-press key for toggling
+  RX audio mute on a slice. Defaults to slice A; configurable to
+  B/C/D in the Property Inspector. The button face reflects the
+  radio's actual mute state — synced from the `audio_mute` field
+  in slice status frames — so changes made elsewhere (SmartSDR,
+  AetherSDR, another button on the deck, a Smart Macro) are
+  reflected here within milliseconds. Two states: blue speaker
+  with sound waves for unmuted, red speaker with diagonal slash
+  for muted. The default button label is "AF A" / "AF B" / etc.
+  so it's clear at a glance which slice the button targets;
+  override with a custom label in the PI if you'd rather name
+  buttons "MAIN" and "SUB" or similar.
+- The AF Volume action's existing mute behavior (dial press, touch
+  tap, rotate-to-zero) is unchanged. AF Mute fills the gap when AF
+  Volume is placed on a regular key — where pressing it jumps to a
+  preset value instead of toggling mute.
+
+### Internal
+- Brings the total action count to 32 (was 31).
+- Uses the established slice-aware PI pattern (A/B/C/D dropdown
+  defaulting to A) and the SettingsWatcher gate for
+  onDidReceiveSettings so live re-configuration works correctly
+  without spurious re-subscribes.
+
 ## [26.5.17] — 2026-05-19
 
 ### Removed

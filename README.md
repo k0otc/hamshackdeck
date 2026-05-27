@@ -30,7 +30,7 @@ FLEX-6400, 6500, 6600, 6700, 8400, 8600, and other 6000/8000-series radios
 running SmartSDR firmware that exposes the standard TCP/IP API on port
 4992. Tested on a FLEX-8600 with SmartSDR 4.2.18 on Windows 11.
 
-## Actions (31 total)
+## Actions (32 total)
 
 <p align="center">
   <img src="docs/marketing/06-gallery-spectrum.png" alt="Every common operation, one tap away — action icon grid" width="100%"/>
@@ -55,6 +55,7 @@ running SmartSDR firmware that exposes the standard TCP/IP API on port
 | Action | Type | What it does |
 |---|---|---|
 | **AF Volume** | key + **dial** | Slice audio level. Rotate to adjust, press to mute. |
+| **AF Mute** | key | Toggle slice RX audio mute with one press. Reflects radio state in real time. |
 | **AGC Threshold** | key + **dial** | AGC-T. Rotate to adjust, press to cycle off/fast/med/slow. |
 | **Sidetone** | key + **dial** | CW monitor gain. Rotate to adjust, press to toggle monitor. |
 | **Headphone** | key + **dial** | Front-panel headphone gain. Rotate to adjust, press to mute. |
